@@ -3,6 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --success: #10b981;
+  --success-light: #d1fae5;
+  --success-dark: #065f46;
+  --border: #e5e7eb;
 }
 
 @theme inline {
@@ -16,11 +22,48 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --success: #059669;
+    --success-light: #065f46;
+    --success-dark: #d1fae5;
+    --border: #374151;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+  min-height: 100vh;
+}
+
+@keyframes checkmark {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.checkmark-animation {
+  animation: checkmark 0.3s ease-in-out forwards;
+}
+
+.bingo-cell {
+  transition: all 0.2s ease-in-out;
+}
+
+.bingo-cell:hover {
+  transform: scale(1.02);
+}
+
+.bingo-cell.marked {
+  background-color: var(--success-light);
 }
